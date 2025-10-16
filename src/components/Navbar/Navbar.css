@@ -1,0 +1,35 @@
+.navbar {
+  align-items: center;
+  border: 2px solid rgb(0, 255, 0);
+  height: 180px;
+}
+.navbar-sticky {
+  top: 5px;
+  left: 50%;
+  width: calc(91%);   /* увеличиваем ширину */
+  margin: 0 auto;     /* центрируем */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  border: 2px solid rgb(255, 0, 0);
+  z-index: 10;
+  transition: top 0.3s ease;
+}
+.logo {
+  width: 180px;
+  height: 85px;        
+  margin-left: 40px;     
+  cursor: pointer;
+  margin-top: -15px;      
+  transition: transform 0.2s;
+}
+.navbar img:hover {
+  transform: scale(1.05);
+}
+.navbar-right {
+  display: flex;             /* делает кнопки в ряд */
+  align-items: center;       /* выравнивает их по вертикали */
+  gap: 1px;                 /* расстояние между Menu и Sign in */
+}
+

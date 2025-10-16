@@ -1,0 +1,64 @@
+.dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-right: 12px;
+}
+
+/* Кнопка */
+.dropdown-toggle {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #aaa;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+/* Выпадающее меню */
+.dropdown-content {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #181818;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    display: none;
+    flex-direction: column;
+    min-width: 140px;
+    z-index: 1000;
+    opacity: 0;
+}
+
+/* Появление с анимацией */
+.dropdown-content.show {
+    display: flex;
+    animation: dropdownFadeIn 0.25s ease forwards;
+}
+
+/* Ключевые кадры */
+@keyframes dropdownFadeIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -5px) scaleY(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, 0) scaleY(1);
+    }
+}
+
+/* Пункты меню */
+.dropdown-content a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: #333;
+}
