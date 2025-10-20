@@ -105,11 +105,11 @@
 /* Full HD и крупные экраны (до 1920px) */
 @media (max-width: 1920px) {
     .FootMain {
-        gap: 8px;
+        gap: 4px;
     }
 
     .textH1 {
-        font-size: 5rem;
+        font-size: 3rem;
     }
 
     .textH2 {
@@ -117,7 +117,7 @@
     }
 
     .form-container {
-        gap: 25px;
+        gap: 35px;
     }
 }
 
