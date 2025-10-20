@@ -8,7 +8,7 @@
     padding: 30px 20px;
     border-radius: 10px;
     text-align: center;
-    width: 70%;        /* компактный блок */
+    width: 70%;
     max-width: 800px;
     color: white;
     display: flex;
@@ -26,32 +26,32 @@
     font-size: 1.5em;
     font-weight: 400;
     color: #ffffff;
-    margin-top: -50px; /* уменьшает пространство под заголовком */
+    margin-top: -50px;
 }
 
 .textH3 {
     font-size: 1rem;
 }
 
-/* Форма: увеличиваем расстояние между input и кнопкой */
+/* Форма */
 .form-container {
     display: flex;
     width: 100%;
     max-width: 600px;
     margin-top: 10px;
-    gap: 35px;          /* было 8px, увеличили до 35px */
+    gap: 35px;
 }
 
 .input-container {
     position: relative;
-    flex: 1;         /* input занимает оставшееся место */
+    flex: 1;
 }
 
 .input-container input {
     width: 100%;
     padding: 16px 12px;
     border-radius: 4px;
-    border: 2px solid #555; /* добавили обводку */
+    border: 2px solid #555;
     font-size: 1rem;
     outline: none;
     background-color: #222;
@@ -60,7 +60,7 @@
 }
 
 .input-container input:focus {
-    border-color: #ffffff; /* цвет обводки при фокусе */
+    border-color: #ffffff;
 }
 
 .input-container label {
@@ -102,28 +102,39 @@
 
 /* ---------------------- Адаптивные стили ---------------------- */
 
-/* Адаптивность для экранов меньше 1024px (ноутбуки, планшеты) */
-@media (max-width: 1024px) {
+/* Full HD и крупные экраны (до 1920px) */
+@media (max-width: 1920px) {
     .FootMain {
-        top: 40%;
-        width: 85%;
-        padding: 25px 15px;
         gap: 8px;
     }
 
     .textH1 {
-        font-size: 4rem; /* уменьшаем заголовок */
+        font-size: 5rem;
     }
 
     .textH2 {
-        font-size: 1.2rem;
-        margin-top: -20px; /* уменьшаем отступ под H1 */
+        margin-top: -30px;
     }
 
     .form-container {
-        flex-direction: column; /* форма вертикальная */
+        gap: 25px;
+    }
+}
+
+/* Ноутбуки и планшеты (до 1440px) */
+@media (max-width: 1440px) {
+    .textH1 {
+        font-size: 4rem;
+    }
+
+    .textH2 {
+        font-size: 1.3rem;
+        margin-top: -20px;
+    }
+
+    .form-container {
+        flex-direction: column;
         gap: 15px;
-        max-width: 100%;
     }
 
     .GetStarted-button {
@@ -133,7 +144,29 @@
     }
 }
 
-/* Адаптивность для экранов меньше 600px (мобильные) */
+/* Ноутбуки и небольшие экраны (до 1024px) */
+@media (max-width: 1024px) {
+    .FootMain {
+        top: 40%;
+        width: 85%;
+        padding: 25px 15px;
+    }
+
+    .textH1 {
+        font-size: 3.5rem;
+    }
+
+    .textH2 {
+        font-size: 1.2rem;
+        margin-top: -15px;
+    }
+
+    .form-container {
+        gap: 12px;
+    }
+}
+
+/* Мобильные экраны (до 600px) */
 @media (max-width: 600px) {
     .FootMain {
         top: 35%;
@@ -152,6 +185,7 @@
     }
 
     .form-container {
+        flex-direction: column;
         gap: 10px;
     }
 
