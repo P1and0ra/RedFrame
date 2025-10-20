@@ -39,7 +39,7 @@
     width: 100%;
     max-width: 600px;
     margin-top: 10px;
-    gap: 35px;          /* было 8px, увеличили до 16px */
+    gap: 35px;          /* было 8px, увеличили до 35px */
 }
 
 .input-container {
@@ -57,6 +57,10 @@
     background-color: #222;
     color: white;
     transition: border-color 0.3s ease;
+}
+
+.input-container input:focus {
+    border-color: #ffffff; /* цвет обводки при фокусе */
 }
 
 .input-container label {
@@ -95,6 +99,69 @@
     background-color: #06f42e;
     transform: scale(1.05);
 }
-.input-container input:focus {
-    border-color: #ffffff; /* цвет обводки при фокусе */
+
+/* ---------------------- Адаптивные стили ---------------------- */
+
+/* Адаптивность для экранов меньше 1024px (ноутбуки, планшеты) */
+@media (max-width: 1024px) {
+    .FootMain {
+        top: 40%;
+        width: 85%;
+        padding: 25px 15px;
+        gap: 8px;
+    }
+
+    .textH1 {
+        font-size: 4rem; /* уменьшаем заголовок */
+    }
+
+    .textH2 {
+        font-size: 1.2rem;
+        margin-top: -20px; /* уменьшаем отступ под H1 */
+    }
+
+    .form-container {
+        flex-direction: column; /* форма вертикальная */
+        gap: 15px;
+        max-width: 100%;
+    }
+
+    .GetStarted-button {
+        width: 100%;
+        font-size: 1.1rem;
+        padding: 14px 0;
+    }
+}
+
+/* Адаптивность для экранов меньше 600px (мобильные) */
+@media (max-width: 600px) {
+    .FootMain {
+        top: 35%;
+        width: 95%;
+        padding: 20px 10px;
+        gap: 6px;
+    }
+
+    .textH1 {
+        font-size: 2.5rem;
+    }
+
+    .textH2 {
+        font-size: 1rem;
+        margin-top: -10px;
+    }
+
+    .form-container {
+        gap: 10px;
+    }
+
+    .input-container input {
+        font-size: 0.9rem;
+        padding: 12px 8px;
+    }
+
+    .GetStarted-button {
+        font-size: 1rem;
+        padding: 12px 0;
+    }
 }
