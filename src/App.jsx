@@ -1,6 +1,7 @@
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import Heroes from "./components/Heroes/Heroes";
+import FootMain from "./components/FootMain/foot-main";
 function App() {
   return (
     <>
@@ -13,6 +14,7 @@ function App() {
         <div>
           <main>
             <Heroes></Heroes>
+            <FootMain></FootMain>
           </main>
         </div>
         <div>
