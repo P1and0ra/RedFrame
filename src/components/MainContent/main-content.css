@@ -1,0 +1,122 @@
+.trending-section {
+    width: 100%;
+    /* уменьшил верхний отступ и сдвинул всю секцию выше */
+    padding: 10px 20px 20px;
+    margin-top: -20%; /* поднимает заголовок и карусель выше на странице */
+    display: flex;
+    flex-direction: column;
+}
+
+.trending-now {
+    font-size: 2rem;
+    font-weight: 600;
+    /* ширина под 4 карточки карусели — сохраняем выравнивание над первой карточкой */
+    width: calc(270px * 4 + 20px * 3);
+    margin: 0 auto 12px;
+    text-align: left;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.carousel-wrapper {
+    position: relative; /* стрелки привязаны к карусели */
+    /* ширина под 4 увеличенных карточки */
+    width: calc(260px * 4 + 20px * 3);
+    overflow: hidden;
+    margin: auto;
+}
+
+.movie-carousel {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
+}
+
+.movie-card {
+    flex: 0 0 230px; /* увеличенная ширина */
+    height: 340px;   /* увеличенная высота */
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.movie-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.movie-card:hover {
+    transform: scale(1.04);
+    z-index: 10;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.45);
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.6rem;
+    color: white;
+    background: rgba(0,0,0,0.5);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    opacity: 0;
+    z-index: 10;
+    transition: all 0.35s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* начальные позиции: вне карусели */
+.arrow.left { left: -90px; }
+.arrow.right { right: -110px; }
+
+/* показывать стрелку, если есть скрытый контент с той стороны */
+.carousel-wrapper.has-left .arrow.left {
+    left: 10px;
+    opacity: 1;
+}
+
+.carousel-wrapper.has-right .arrow.right {
+    right: 10px;
+    opacity: 1;
+}
+
+/* при наведении — соответствующая стрелка превращается в прямоугольник и чуть въезжает (если есть контент) */
+.carousel-wrapper.has-left:hover .arrow.left {
+    left: 10px;
+    border-radius: 6px;
+    padding: 8px 16px;
+    background: rgba(0,0,0,0.88);
+    font-size: 1.25rem;
+}
+
+.carousel-wrapper.has-right:hover .arrow.right {
+    right: 10px;
+    border-radius: 6px;
+    padding: 8px 16px;
+    background: rgba(0,0,0,0.88);
+    font-size: 1.25rem;
+}
+
+/* если нет контента с какой-то стороны — кнопка должна быть невидимой и некликабельной */
+.carousel-wrapper:not(.has-left) .arrow.left,
+.carousel-wrapper:not(.has-right) .arrow.right {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* наведение на саму кнопку */
+.arrow:hover {
+    background: rgba(0,0,0,0.95);
+}
+
+/* чтобы стрелки не перекрывали контент при z-index проблемах */
+.carousel-wrapper .arrow {
+    pointer-events: auto;
+}

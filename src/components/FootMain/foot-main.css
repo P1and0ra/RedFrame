@@ -18,8 +18,9 @@
 }
 
 .textH1 {
-    font-size: 6rem;
-    font-weight: 800;
+    font-size: 5rem;
+    font-weight: 900;
+    font-family: unset;
 }
 
 .textH2 {

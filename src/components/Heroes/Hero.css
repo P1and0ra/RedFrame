@@ -9,7 +9,7 @@
     /* фиксируем картинку под всеми элементами */
     top: 0;
     left: 0;
-    width: 90%;
+    width: 110%;
     height: 120%;
     object-fit: cover;
     filter: brightness(0.5);
