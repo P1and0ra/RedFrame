@@ -1,11 +1,9 @@
 import NetflixLogo from './netflix.png'
-import LandingBackground from './LandingPage2-0.jpg'
-import align from './align.png'
+import LandingBackground from './LandingPage2-0-1.jpg'
 
 export {
     NetflixLogo,
     LandingBackground,
-    align
 }
 
 export const movies = [

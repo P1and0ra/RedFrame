@@ -10,8 +10,8 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: -200px; /* изображение поднимается вверх на высоту navbar */
-    height: calc(70% + 80px);
+    top: -530px; /* изображение поднимается вверх на высоту navbar */
+    height: calc(100% + 80px);
     width: 100%;
     object-fit: cover;
     object-position: top center;
