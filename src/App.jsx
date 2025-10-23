@@ -19,7 +19,7 @@ function App() {
             <FootMain></FootMain>
           </main>
         </div>
-        <div>
+        <div className="page-bg">
           <main>
             <MainContent></MainContent>
           </main>
