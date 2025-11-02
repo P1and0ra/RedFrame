@@ -1,0 +1,67 @@
+/* Общий контейнер секции */
+.more-reason-section {
+  text-align: center;
+  padding: 60px 20px;
+  color: #fff;
+}
+
+.more-reason-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.more-reason-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  padding: 0 40px;
+  justify-items: center;
+}
+
+.reason-card {
+  background: linear-gradient(145deg, #0b0b24, #1a1035);
+  color: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.reason-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.reason-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.reason-card p {
+  font-size: 0.9rem;
+  color: #ccc;
+  line-height: 1.4;
+}
+
+/* адаптив */
+@media (max-width: 768px) {
+  .more-reason-cards {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .more-reason-cards {
+    grid-template-columns: 1fr;
+    padding: 0 16px;
+  }
+}
+

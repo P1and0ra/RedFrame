@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Heroes from "./components/Heroes/Heroes";
 import FootMain from "./components/FootMain/foot-main";
 import MainContent from "./components/MainContent/main-content";
+import MoreReason from "./components/MainContent/more-reason";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <div className="page-bg">
           <main>
             <MainContent></MainContent>
+            <MoreReason></MoreReason>
           </main>
         </div>
       </div>
