@@ -1,0 +1,132 @@
+/* FAQ Netflix 2025 — узкие по ширине и по высоте, заголовок слева сверху */
+
+.faq {
+    background: #000;
+    padding: 5px 0 100px;
+    border-bottom: 8px solid #222;
+}
+
+.faq__container {
+    max-width: 3000px;
+    margin: 0 500px auto;
+    padding: 0 45px;
+}
+
+/* Заголовок — над блоками и слева */
+.faq__title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.05;
+    text-align: left;
+}
+
+/* Узкая колонка вопросов */
+.faq__list {
+    max-width: 2000px;           /* ← узкие и длинные блоки */
+    width: 100%;
+    margin: 0 auto 0 0;         /* прижато влево */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.faq__item {
+    background: #303030;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.faq__item[open] {
+    margin-bottom: 8px;
+}
+
+/* Тонкие по высоте заголовки вопросов */
+.faq__question {
+    padding: 0.3em 1.8em;
+    min-height: 58px;                    /* ← супер-узкие по высоте */
+    background: #303030;
+    color: #fff;
+    font-size: 1.75rem;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.35s ease;
+    user-select: none;
+}
+
+.faq__question:hover {
+    background: #414141;
+}
+
+.faq__question::-webkit-details-marker,
+.faq__question::marker { display: none; }
+
+.faq__icon {
+    font-size: 3.2rem;                   /* аккуратный плюсик в тонкой полоске */
+    font-weight: 100;
+    transition: transform 0.42s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.faq__item[open] .faq__icon {
+    transform: rotate(45deg);
+}
+
+/* Премиум-анимация раскрытия */
+.faq__answer {
+    background: #303030;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 1.8em;
+    font-size: 1.75rem;
+    line-height: 1.45;
+    color: #fff;
+    border-top: 1px solid #000;
+    transition:
+        max-height 0.65s cubic-bezier(0.4, 0.0, 0.2, 1),
+        padding 0.65s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.faq__item[open] .faq__answer {
+    max-height: 2000px;
+    padding: 1.8em 1.8em;
+}
+
+.faq__answer > div {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.5s 0.12s, transform 0.5s 0.12s;
+}
+
+.faq__item[open] .faq__answer > div {
+    opacity: 1;
+    transform: none;
+}
+
+/* Адаптив — как у Netflix */
+@media (max-width: 949px) {
+    .faq__container { padding: 0 20px; }
+    .faq__title {
+        font-size: 2.8rem;
+        text-align: center;
+    }
+    .faq__list { 
+        max-width: none; 
+    }
+}
+
+@media (max-width: 599px) {
+    .faq { padding: 60px 0 80px; }
+    .faq__title { font-size: 1.875rem; margin-bottom: 36px; }
+    .faq__question,
+    .faq__answer { font-size: 1.125rem; }
+    .faq__question { 
+        padding: 0.9em 1.2em; 
+        min-height: 54px;
+    }
+    .faq__icon { font-size: 2.8rem; }
+    .faq__answer { padding: 0 1.2em; }
+    .faq__item[open] .faq__answer { padding: 1.2em 1.2em; }
+}
