@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import "./SignInForm.css";
 
 function SignInForm() {
@@ -59,13 +60,14 @@ function SignInForm() {
                             <span>Remember me</span>
                         </label>
                     </div>
-
                     <div className="signup-link">
                         <p>
-                            New to Netflix? <a href="/">Sign up now</a>.
+                            New to Netflix?
+                            <Link to="/signup">
+                                <a href="/">Sign up now</a>.
+                            </Link>
                         </p>
                     </div>
-
                     <div className="recaptcha-text">
                         <p>
                             This page is protected by Google reCAPTCHA to ensure you're not a bot.{" "}

@@ -12,8 +12,9 @@ import MoreReason from "./components/MainContent/more-reason";
 import FAQ from "./components/FAQ/FAQ";
 import Footer from "./components/Footer/Footer";
 
-// Новая страница входа (создай файл src/SignIn.jsx)
-import SignIn from "./Pages/SignIn"; 
+// Новые страницы (создайте файлы src/Pages/SignIn/SignIn.jsx и src/Pages/SignUp/SignUp.jsx)
+import SignIn from "./Pages/SignIn/SignIn";
+import SignUp from "./Pages/SignUp/SignUp";
 
 function App() {
   return (
@@ -35,13 +36,24 @@ function App() {
           </>
         }
       />
-
       {/* Страница входа */}
-      <Route path="/login" element={
-        <>
-          <SignIn />
-        </>
-      } />
+      <Route
+        path="/login"
+        element={
+          <>
+            <SignIn />
+          </>
+        }
+      />
+      {/* Страница регистрации */}
+      <Route
+        path="/signup"
+        element={
+          <>
+            <SignUp />
+          </>
+        }
+      />
     </Routes>
   );
 }

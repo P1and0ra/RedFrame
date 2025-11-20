@@ -3,9 +3,11 @@ import "./Footer.css";
 import React from "react";
 import DropDownButton from "../Navbar/DropDownButton";
 
-function Footer() {
+function Footer({ variant = "default" }) {   // ← добавили пропс
+  const isAuthPage = variant === "auth";
+
   return (
-    <footer className="netflix-footer">
+    <footer className={`netflix-footer ${isAuthPage ? "netflix-footer--auth" : ""}`}>
       <div className="footer-container">
         <p className="footer-contact">
           Questions? <a href="#">Contact us.</a>
@@ -41,9 +43,13 @@ function Footer() {
           </div>
         </div>
 
-        <div className="footer-language">
-          <DropDownButton />
-        </div>
+        {/* Условно показываем дропдаун только НЕ на auth-страницах */}
+        {!isAuthPage && (
+          <div className="footer-language">
+            <DropDownButton />
+          </div>
+        )}
+
         <p className="footer-bottom">Netflix Poland</p>
       </div>
     </footer>
