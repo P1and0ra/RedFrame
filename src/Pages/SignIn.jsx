@@ -1,14 +1,21 @@
-import React from 'react';
-import Heroes from '../components/Heroes/Heroes';
-import { NetflixLogo } from '../assets';
-import Navbar from '../components/Navbar/Navbar';
+// src/SignIn.jsx — ЧИСТАЯ страница входа поверх Heroes
+import React from "react";
+import Navbar from "../components/Navbar/Navbar";
+import Heroes from "../components/Heroes/Heroes";
+import SignInForm from "../components/SignInForm/SignInForm";
+import "./SignIn.css";
+
 function SignIn() {
   return (
-    <div>
-        <div>
-          <Navbar variant="auth" />
-        </div>
-          <Heroes />
+    <div className="signin-page">
+      {/* Навигационная панель */}
+      <Navbar variant="auth" />
+      {/* Фоновые герои */}
+      <Heroes />
+      {/* Форма по центру */}
+      <div className="signin-form-container">
+        <SignInForm />
+      </div>
     </div>
   );
 }
