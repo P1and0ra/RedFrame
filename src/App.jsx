@@ -10,9 +10,10 @@ import FootMain from "./components/FootMain/foot-main";
 import MainContent from "./components/MainContent/main-content";
 import MoreReason from "./components/MainContent/more-reason";
 import FAQ from "./components/FAQ/FAQ";
+import Footer from "./components/Footer/Footer";
 
 // Новая страница входа (создай файл src/SignIn.jsx)
-import SignIn from "./Pages/SignIn";   // ← просто из корня src!
+import SignIn from "./Pages/SignIn"; 
 
 function App() {
   return (
@@ -29,13 +30,18 @@ function App() {
               <MainContent />
               <MoreReason />
               <FAQ />
+              <Footer />
             </div>
           </>
         }
       />
 
       {/* Страница входа */}
-      <Route path="/login" element={<SignIn />} />
+      <Route path="/login" element={
+        <>
+          <SignIn />
+        </>
+      } />
     </Routes>
   );
 }

@@ -36,3 +36,17 @@
   gap: 1px;                 /* расстояние между Menu и Sign in */
 }
 
+
+.navbar-auth {
+  background: transparent !important; /* или #000, если хочешь чёрный */
+  backdrop-filter: none;
+}
+
+.navbar-auth .navbar-sticky {
+  justify-content: flex-start; /* логотип слева, ничего справа */
+  padding: 20px 45px;
+}
+
+.navbar-auth .logo {
+  width: 167px;
+}

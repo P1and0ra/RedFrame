@@ -18,12 +18,9 @@ function MainContent() {
         const gap = 20;        // увеличенный gap
         const step = VISIBLE;  // листать на один "экран" (4 карточки)
         let newPosition = direction === "left" ? position - step : position + step;
-
         if (newPosition < 0) newPosition = 0;
         if (newPosition > maxPosition) newPosition = maxPosition;
-
         setPosition(newPosition);
-
         if (carouselRef.current) {
             carouselRef.current.style.transform = `translateX(-${newPosition * (cardWidth + gap)}px)`;
         }
@@ -32,7 +29,6 @@ function MainContent() {
     return (
         <div className="trending-section">
             <h1 className="trending-now">Trending Now</h1>
-
             <div className={`carousel-wrapper ${hasLeft ? 'has-left' : ''} ${hasRight ? 'has-right' : ''}`}>
                 <button
                     className="arrow left"
@@ -42,7 +38,6 @@ function MainContent() {
                 >
                     &#10094;
                 </button>
-
                 <div className="movie-carousel" ref={carouselRef}>
                     {movies.map((movie) => (
                         <div key={movie.id} className="movie-card">

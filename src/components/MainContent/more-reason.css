@@ -1,4 +1,4 @@
-/* more-reason.css — твой код 1-в-1 + только крутые ховер-анимации (JSX не трогаем!) */
+
 
 .more-reason {
   margin-top: 40px;
@@ -150,7 +150,7 @@
   z-index: 1;
 }
 
-/* ────── ВЕСЬ АДАПТИВ — ТВОЙ, БЕЗ ИЗМЕНЕНИЙ ────── */
+/* ────── ВЕСЬ АДАПТИВ —  БЕЗ ИЗМЕНЕНИЙ ────── */
 @media (max-width: 960px) {
   .more-reason__container { grid-template-columns: 1fr; gap: 28px; }
   .more-reason__side { padding-left: 0; }
