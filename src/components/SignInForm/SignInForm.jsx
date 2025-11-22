@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import "./SignInForm.css"
 
 function SignInForm({ isSignup = false }) {
@@ -7,6 +7,7 @@ function SignInForm({ isSignup = false }) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [message, setMessage] = useState("")
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -23,15 +24,17 @@ function SignInForm({ isSignup = false }) {
                     isSignup ? { name, email, password } : { email, password }
                 ),
             })
-
             const data = await res.json()
-
             if (res.ok) {
                 setMessage(isSignup ? "Registration successful!" : "Login successful!")
                 console.log(data)
-            } else {
+                localStorage.setItem("isAuthenticated", "true");
+                navigate("/profiles")
+            } 
+            else {
                 setMessage(data.message || "Ошибка")
             }
+            return;
         } catch (err) {
             console.error("Fetch error:", err)
             setMessage("Сервер недоступен")

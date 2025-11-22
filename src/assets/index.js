@@ -1,9 +1,19 @@
 import NetflixLogo from './netflix.png'
 import LandingBackground from './LandingPage2-0-1.jpg'
+import Profile1 from './normal.jpg'
+import Profile2 from './profile.jpg'
+import Profile3 from './smile.png'
+import Profile4 from './weird.png'
+
+
 
 export {
     NetflixLogo,
     LandingBackground,
+    Profile1,
+    Profile2,
+    Profile3,
+    Profile4,
 }
 
 export const movies = [
@@ -53,3 +63,4 @@ export const movies = [
             title: "Movie 8",
         },
     ];
+

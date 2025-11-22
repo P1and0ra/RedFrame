@@ -15,6 +15,7 @@ import Footer from "./components/Footer/Footer";
 // Новые страницы (создайте файлы src/Pages/SignIn/SignIn.jsx и src/Pages/SignUp/SignUp.jsx)
 import SignIn from "./Pages/SignIn/SignIn";
 import SignUp from "./Pages/SignUp/SignUp";
+import Profiles from "./Pages/Profiles/Profiles";
 
 function App() {
   return (
@@ -51,6 +52,15 @@ function App() {
         element={
           <>
             <SignUp />
+          </>
+        }
+      />
+      {/* Страница профилей */}
+      <Route
+        path="/profiles"
+        element={
+          <>
+            <Profiles />
           </>
         }
       />

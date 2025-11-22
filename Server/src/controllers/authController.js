@@ -46,6 +46,7 @@ export const login = async (req, res) => {
 
         res.json({
             success: true,
+            message: "Login successful",
             user: {
                 id: user._id,
                 name: user.name,
@@ -55,4 +56,4 @@ export const login = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: "Ошибка сервера" });
     }
-};
+}; 
