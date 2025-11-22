@@ -2,39 +2,44 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Profiles.css";
-import { Profile1, Profile2, Profile3, Profile4 } from "../../assets";
+import { avatars } from "../../assets";
 
 
 export default function Profiles() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Проверяем, залогинен ли пользователь
         if (localStorage.getItem("isAuthenticated") !== "true") {
             navigate("/login", { replace: true });
         }
     }, [navigate]);
 
-    // Если не залогинен — ничего не рендерим (редирект уже пошёл)
     if (localStorage.getItem("isAuthenticated") !== "true") {
         return null;
     }
 
-    // ЭТО ДОЛЖНО ПОЯВИТЬСЯ НА ЭКРАНЕ
+    const handleSelectProfile = () => {
+        // Пока просто переходим на главную страницу Netflix
+        navigate("/browse");
+    };
+
     return (
-        <div
-            style={{
-                backgroundColor: "#000",
-                color: "#fff",
-                height: "100vh",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "60px",
-                fontWeight: "bold",
-            }}
-        >
-            HELLO WORLD — Ты успешно вошёл!
+        <div className="profiles-container">
+            <h1 className="profiles-title">Who's watching?</h1>
+            <div className="profiles-grid">
+                {avatars.map((avatar) => (
+                    <div
+                        key={avatar.id}
+                        className="profile-item"
+                        onClick={handleSelectProfile}
+                    >
+                        <div className="profile-avatar">
+                            <img src={avatar.img} alt={avatar.name} />
+                        </div>
+                        <span className="profile-name">{avatar.name}</span>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }

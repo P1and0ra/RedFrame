@@ -10,10 +10,6 @@ import Profile4 from './weird.png'
 export {
     NetflixLogo,
     LandingBackground,
-    Profile1,
-    Profile2,
-    Profile3,
-    Profile4,
 }
 
 export const movies = [
@@ -64,3 +60,9 @@ export const movies = [
         },
     ];
 
+export const avatars = [
+        { id: 1, img: Profile1, name: "normal" },
+        { id: 2, img: Profile2, name: "literally me" },
+        { id: 3, img: Profile3, name: "smile" },
+        { id: 4, img: Profile4, name: "weird" },
+    ];
