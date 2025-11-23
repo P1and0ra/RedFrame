@@ -1,9 +1,8 @@
-// src/App.jsx — Финальная версия с роутингом
 
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
-// Твои компоненты (главная страница)
+// компоненты
 import Navbar from "./components/Navbar/Navbar";
 import Heroes from "./components/Heroes/Heroes";
 import FootMain from "./components/FootMain/foot-main";
@@ -12,10 +11,11 @@ import MoreReason from "./components/MainContent/more-reason";
 import FAQ from "./components/FAQ/FAQ";
 import Footer from "./components/Footer/Footer";
 
-// Новые страницы (создайте файлы src/Pages/SignIn/SignIn.jsx и src/Pages/SignUp/SignUp.jsx)
+// Новые страницы 
 import SignIn from "./Pages/SignIn/SignIn";
 import SignUp from "./Pages/SignUp/SignUp";
 import Profiles from "./Pages/Profiles/Profiles";
+import Browse from "./Pages/Browse/Browse";
 
 function App() {
   return (
@@ -61,6 +61,15 @@ function App() {
         element={
           <>
             <Profiles />
+          </>
+        }
+      />
+      {/* Страница просмотра контента */}
+      <Route
+        path="/browse"
+        element={
+          <>
+            <Browse />
           </>
         }
       />

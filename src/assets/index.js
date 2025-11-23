@@ -4,6 +4,15 @@ import Profile1 from './normal.jpg'
 import Profile2 from './profile.jpg'
 import Profile3 from './smile.png'
 import Profile4 from './weird.png'
+import poster1 from './poster1.jpg'
+import poster2 from './poster2.jpg'
+import poster3 from './poster3.jpg'
+import poster4 from './poster4.jpg'
+import poster5 from './poster5.jpg'
+import poster6 from './poster6.jpg'
+import poster7 from './poster7.jpg'
+import poster8 from './poster8.jpg'
+import poster9 from './poster9.jpg'
 
 
 
@@ -66,3 +75,7 @@ export const avatars = [
         { id: 3, img: Profile3, name: "smile" },
         { id: 4, img: Profile4, name: "weird" },
     ];
+
+export const MovieData = [
+
+]
