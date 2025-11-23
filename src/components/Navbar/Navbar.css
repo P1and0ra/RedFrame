@@ -50,3 +50,18 @@
 .navbar-auth .logo {
   width: 167px;
 }
+.btn-signout {
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-signout:hover {
+  background: #f40612;
+}

@@ -1,127 +1,142 @@
 // src/pages/Browse.jsx
 import React, { useState, useRef } from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import { movies } from "../../assets"; // ← твои фильмы
+import Footer from "../../components/Footer/Footer";
+import { MovieData } from "../../assets";
 import "./Browse.css";
 
 export default function Browse() {
     const [selectedMovie, setSelectedMovie] = useState(null);
+    const rowRefs = useRef({});
 
-    // Дублируем фильмы, чтобы было много в каруселях
-    const bigList = [...movies, ...movies, ...movies, ...movies]; // 36+ фильмов
+    const moviesWithDetails = MovieData.map((movie, i) => ({
+        ...movie,
+        match: [94, 97, 89, 98, 92, 96, 91, 99, 87][i] || 95,
+        year: [2024, 2023, 2025, 2022, 2024, 2021, 2025, 2023, 2024][i],
+        duration: i % 2 === 0
+            ? `${2 + (i % 3)}h ${15 + (i * 5) % 45}m`
+            : `${i + 1} Season${i > 0 ? "s" : ""}`,
+        rating: i % 3 === 0 ? "TV-MA" : i % 2 === 0 ? "R" : "PG-13",
+        description: [
+            "As an angry mob rises against the Wicked Witch, Glinda and Elphaba will need to come together one final time...",
+            "A mind-bending sci-fi thriller that will leave you questioning reality.",
+            "The epic conclusion to the beloved fantasy saga begins here.",
+            "A gripping crime drama based on true events.",
+            "Love, betrayal, and revenge in the heart of Paris.",
+            "The most anticipated superhero team-up of the decade.",
+            "A heartwarming story about family and second chances.",
+            "Dark secrets unravel in this psychological horror masterpiece.",
+            "An action-packed adventure across the multiverse."
+        ][i] || "An incredible story you won't forget."
+    }));
+
+    const bigList = [...moviesWithDetails, ...moviesWithDetails, ...moviesWithDetails, ...moviesWithDetails];
 
     const rows = [
+        { title: "Continue Watching", items: bigList },
+        { title: "Top 10 in Your Country", items: bigList.slice(3) },
         { title: "Trending Now", items: bigList },
-        { title: "Continue Watching", items: bigList.slice(5) },
-        { title: "Top 10 in Your Country", items: bigList.slice(10) },
-        { title: "New Releases", items: bigList },
-        { title: "Because You Watched Stranger Things", items: bigList.slice(3) },
+        { title: "New Releases", items: bigList.slice(7) },
     ];
 
-    const scrollRow = (ref, direction) => {
-        const scrollAmount = 1000;
-        ref.current.scrollBy({
-            left: direction === "left" ? -scrollAmount : scrollAmount,
-            behavior: "smooth",
-        });
+    const scrollRow = (index, direction) => {
+        const row = rowRefs.current[index];
+        if (row) {
+            row.scrollBy({
+                left: direction === "left" ? -1300 : 1300,
+                behavior: "smooth"
+            });
+        }
     };
 
     return (
-        <div className="browse-page">
-            <Navbar variant="home" />
-
+        <div className="netflix-app">
+            <div className="app-container">
+                <Navbar variant="home" />
+            </div>
             {/* Главный баннер */}
-            <div className="hero-banner">
-                <img src={movies[0].img} alt="Featured" className="hero-bg" />
-                <div className="hero-gradient" />
-                <div className="hero-content">
-                    <h1>{movies[0].title || "Featured Movie"}</h1>
-                    <p>
-                        An epic story of love, betrayal, and redemption that will keep you on the edge of your seat.
-                    </p>
-                    <div className="hero-buttons">
-                        <button className="btn-play">Play</button>
-                        <button className="btn-info">More Info</button>
+            <section className="billboard">
+                <img src={moviesWithDetails[0].poster} alt="Featured" className="billboard-backdrop" />
+                <div className="billboard-gradient" />
+                <div className="billboard-info">
+                    <h1 className="billboard-title">{moviesWithDetails[0].title}</h1>
+                    <p className="billboard-synopsis">{moviesWithDetails[0].description}</p>
+                    <div className="billboard-controls">
+                        <button className="play-button">Play</button>
+                        <button className="info-button">More Info</button>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            {/* Карусели */}
-            <div className="content-section">
-                {rows.map((row, idx) => {
-                    const rowRef = useRef(null);
+            {/* Карусели — ЧИСТЫЕ, БЕЗ ТЕКСТА НА СТРЕЛКАХ */}
+            <main className="content-section">
+                {rows.map((row, index) => (
+                    <section key={index} className="title-row">
+                        <h2 className="row-label">{row.title}</h2>
+                        <div className="row-wrapper">
+                            {/* Стрелки — только иконки, без текста */}
+                            <button
+                                className="nav-arrow nav-prev"
+                                onClick={() => scrollRow(index, "left")}
+                                aria-label="Previous titles"
+                            >
+                                Left Arrow
+                            </button>
 
-                    return (
-                        <div key={idx} className="movie-row">
-                            <h2 className="row-title">{row.title}</h2>
-
-                            <div className="row-wrapper">
-                                <button
-                                    className="nav-arrow left"
-                                    onClick={() => scrollRow(rowRef, "left")}
-                                >
-                                    ‹
-                                </button>
-
-                                <div className="row-posters" ref={rowRef}>
-                                    {row.items.map((movie) => (
-                                        <div
-                                            key={`${movie.id}-${idx}`}
-                                            className="poster-wrapper"
-                                            onClick={() => setSelectedMovie(movie)}
-                                        >
-                                            <img src={movie.img} alt={movie.title} className="poster-large" />
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <button
-                                    className="nav-arrow right"
-                                    onClick={() => scrollRow(rowRef, "right")}
-                                >
-                                    ›
-                                </button>
+                            <div className="titles-slider" ref={(el) => (rowRefs.current[index] = el)}>
+                                {row.items.map((movie, i) => (
+                                    <div
+                                        key={`${movie.id}-${index}-${i}`}
+                                        className="title-card-wrapper"
+                                        onClick={() => setSelectedMovie(movie)}
+                                    >
+                                        <img
+                                            src={movie.poster}
+                                            alt={movie.title}
+                                            className="title-card"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                ))}
                             </div>
-                        </div>
-                    );
-                })}
-            </div>
 
-            {/* Полноэкранное окно при клике — ТОЧНО КАК НА ТВОЁМ СКРИНЕ */}
+                            <button
+                                className="nav-arrow nav-next"
+                                onClick={() => scrollRow(index, "right")}
+                                aria-label="Next titles"
+                            >
+                                Right Arrow
+                            </button>
+                        </div>
+                    </section>
+                ))}
+            </main>
+
+            <Footer />
+
+            {/* Модальное окно */}
             {selectedMovie && (
-                <div className="movie-modal-overlay" onClick={() => setSelectedMovie(null)}>
-                    <div className="movie-modal" onClick={(e) => e.stopPropagation()}>
-                        <button className="close-modal" onClick={() => setSelectedMovie(null)}>
-                            ×
+                <div className="title-modal-overlay" onClick={() => setSelectedMovie(null)}>
+                    <article className="title-modal" onClick={(e) => e.stopPropagation()}>
+                        <button className="modal-close" onClick={() => setSelectedMovie(null)} aria-label="Close">
+                            Close
                         </button>
-
-                        <img src={selectedMovie.img} alt={selectedMovie.title} className="modal-banner" />
-
-                        <div className="modal-info">
-                            <h1>{selectedMovie.title || "Movie Title"}</h1>
-
-                            <div className="modal-meta">
-                                <span className="rating">98% Match</span>
-                                <span>2025</span>
-                                <span>2h 17m</span>
-                                <span className="hd">HD</span>
+                        <img src={selectedMovie.poster} alt={selectedMovie.title} className="modal-hero" />
+                        <div className="modal-body">
+                            <h1 className="modal-title">{selectedMovie.title}</h1>
+                            <div className="modal-metadata">
+                                <span className="match-score">{selectedMovie.match}% Match</span>
+                                <span className="release-year">{selectedMovie.year}</span>
+                                <span className="duration">{selectedMovie.duration}</span>
+                                <span className="age-rating-badge">{selectedMovie.rating}</span>
                             </div>
-
-                            <p className="modal-description">
-                                As an angry mob rises against the Wicked Witch, Glinda and Elphaba will need to come together one final time...
-                            </p>
-
+                            <p className="modal-synopsis">{selectedMovie.description}</p>
                             <div className="modal-actions">
-                                <button className="btn-play-large">Play</button>
-                                <button className="btn-mylist-large">+ My List</button>
-                            </div>
-
-                            <div className="modal-details">
-                                <div><strong>Cast:</strong> Cynthia Erivo, Ariana Grande, Jonathan Bailey</div>
-                                <div><strong>Genres:</strong> Fantasy, Musical, Adventure</div>
+                                <button className="play-large">Play</button>
+                                <button className="add-to-list">+ My List</button>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 </div>
             )}
         </div>

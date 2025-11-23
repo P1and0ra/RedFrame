@@ -1,277 +1,386 @@
-/* src/pages/Browse.css — БОЛЬШИЕ КАРУСЕЛИ + ПОЛНОЭКРАННОЕ ОКНО */
-.browse-page {
+/* src/pages/Browse.css — ФИНАЛЬНАЯ ВЕРСИЯ, БЕЗ ВСЯКИХ БАГОВ */
+.netflix-app {
     background: #000;
     color: white;
     min-height: 100vh;
+    font-family: "Helvetica Neue", Arial, sans-serif;
 }
-
-/* Hero */
-.hero-banner {
+.app-container {
+    z-index: 10;
     position: relative;
-    height: 90vh;
+    
+}   
+
+/* ======================== BILLBOARD ======================== */
+.billboard {
+    position: relative;
+    height: 100vh;
+    margin-top: -200px;
     overflow: hidden;
+    z-index: 1;
 }
 
-.hero-bg {
+.billboard-backdrop {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.5);
+    filter: brightness(0.45);
+    animation: fadeIn 2s ease-out;
 }
 
-.hero-gradient {
+.billboard-gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(transparent 40%, #000 90%);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 0%, transparent 40%),
+        linear-gradient(to top, #000 5%, transparent 50%);
+    z-index: 1;
 }
 
-.hero-content {
+.billboard-info {
     position: absolute;
     bottom: 18%;
     left: 4%;
-    max-width: 600px;
+    max-width: 700px;
     z-index: 2;
+    opacity: 0;
+    animation: slideUpFade 1.4s ease-out 0.8s forwards;
 }
 
-.hero-content h1 {
-    font-size: 5rem;
+.billboard-title {
+    font-size: 6rem;
     font-weight: 900;
-    margin-bottom: 1rem;
+    margin: 0 0 1.5rem;
+    line-height: 1;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
 }
 
-.hero-content p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+.billboard-synopsis {
+    font-size: 1.7rem;
+    line-height: 1.5;
+    margin-bottom: 2.5rem;
+    max-width: 90%;
 }
 
-.hero-buttons button {
-    padding: 1rem 3rem;
-    margin-right: 1rem;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 4px;
+.billboard-controls button {
+    padding: 1rem 3.5rem;
+    margin-right: 1.5rem;
+    font-size: 1.4rem;
     font-weight: bold;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.btn-play {
+.play-button {
     background: white;
     color: black;
 }
 
-.btn-info {
+.info-button {
     background: rgba(109, 109, 110, 0.7);
     color: white;
 }
 
-/* Карусели — БОЛЬШИЕ */
+.play-button:hover {
+    transform: scale(1.05);
+}
+
+.info-button:hover {
+    background: rgba(109, 109, 110, 1);
+}
+
+/* ======================== КАРУСЕЛИ — ЧИСТЫЙ СТАРТ ======================== */
 .content-section {
-    padding: 0 4%;
-    margin-top: -12vh;
+    padding: 7vh 4% 0 4%;
+    /* ← Главное исправление: теперь ничего не торчит сверху */
+    margin-top: 0;
 }
 
-.movie-row {
-    margin-bottom: 4rem;
+.title-row {
+    margin-bottom: 5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s ease-out forwards;
+    animation-delay: calc(0.15s * var(--row-index, 0));
 }
 
-.row-title {
-    font-size: 1.6rem;
+.row-label {
+    font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    padding-left: 8px;
+    padding-left: 12px;
 }
 
 .row-wrapper {
     position: relative;
 }
 
-.row-posters {
+.titles-slider {
     display: flex;
-    gap: 8px;
+    gap: 12px;
     overflow-x: auto;
     scroll-behavior: smooth;
-    padding: 10px 0;
+    padding: 12px 0;
     scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-.row-posters::-webkit-scrollbar {
+.titles-slider::-webkit-scrollbar {
     display: none;
 }
 
-.poster-wrapper {
-    flex: 0 0 320px;
+.title-card-wrapper {
+    flex: 0 0 340px;
     cursor: pointer;
-    transition: transform 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.poster-wrapper:hover {
-    transform: scale(1.05);
+.title-card-wrapper:hover {
+    transform: scale(1.1) translateY(-10px);
     z-index: 10;
 }
 
-.poster-large {
-    width: 320px;
-    height: 180px;
+.title-card {
+    width: 100%;
+    height: 192px;
     object-fit: cover;
-    border-radius: 8px;
-    transition: all 0.4s;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    transition: all 0.4s ease;
 }
 
-.poster-wrapper:hover .poster-large {
-    border-radius: 8px 8px 0 0;
-}
-
-/* Стрелки */
+/* ======================== СТРЕЛКИ — ЧИСТЫЕ ======================== */
 .nav-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 60px;
-    height: 140px;
+    width: 50px;
+    height: 50px;
     background: rgba(0, 0, 0, 0.6);
-    border: none;
-    color: white;
-    font-size: 4rem;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    color: transparent;
+    font-size: 0;
     cursor: pointer;
     z-index: 20;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+}
+
+.nav-prev::before,
+.nav-next::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border-left: 4px solid white;
+    border-bottom: 4px solid white;
+    display: block;
+}
+
+.nav-prev::before {
+    transform: rotate(45deg);
+    margin-right: -4px;
+}
+
+.nav-next::before {
+    transform: rotate(-135deg);
+    margin-left: -4px;
 }
 
 .row-wrapper:hover .nav-arrow {
     opacity: 1;
+    background: rgba(0, 0, 0, 0.8);
+    border-color: white;
 }
 
-.left {
-    left: 0;
+.nav-arrow:hover {
+    background: #e50914;
+    border-color: #e50914;
+    transform: translateY(-50%) scale(1.2);
 }
 
-.right {
-    right: 0;
+.nav-prev {
+    left: 10px;
 }
 
-/* Полноэкранное окно — ТОЧНО КАК НА СКРИНЕ */
-.movie-modal-overlay {
+.nav-next {
+    right: 10px;
+}
+
+/* ======================== МОДАЛКА ======================== */
+.title-modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 1000;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.97);
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1000;
     padding: 2rem;
+    animation: fadeIn 0.5s ease-out;
 }
 
-.movie-modal {
-    position: relative;
-    max-width: 900px;
+.title-modal {
+    max-width: 1000px;
     width: 100%;
     background: #181818;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
+    animation: modalDrop 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform: translateY(-120px);
+    opacity: 0;
 }
 
-.close-modal {
+.modal-close {
     position: absolute;
     top: 20px;
     right: 30px;
     background: none;
     border: none;
     color: white;
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     cursor: pointer;
     z-index: 10;
+    transition: all 0.3s;
 }
 
-.modal-banner {
+.modal-close:hover {
+    transform: scale(1.2);
+}
+
+.modal-hero {
     width: 100%;
-    height: 500px;
+    height: 560px;
     object-fit: cover;
 }
 
-.modal-info {
-    padding: 3rem;
+.modal-body {
+    padding: 4rem;
 }
 
-.modal-info h1 {
-    font-size: 3.5rem;
+.modal-title {
+    font-size: 4.5rem;
     font-weight: 900;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
-.modal-meta {
+.modal-metadata {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-    font-size: 1.2rem;
+    gap: 2rem;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
 }
 
-.rating {
+.match-score {
     color: #46d369;
     font-weight: bold;
 }
 
-.hd {
-    border: 1px solid #666;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 0.9rem;
+.age-rating-badge {
+    border: 2px solid #666;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
 }
 
-.modal-description {
-    font-size: 1.3rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
+.modal-synopsis {
+    font-size: 1.4rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
     max-width: 90%;
 }
 
 .modal-actions button {
-    padding: 1rem 3rem;
-    margin-right: 1rem;
-    font-size: 1.3rem;
-    border: none;
-    border-radius: 6px;
+    padding: 1.3rem 4rem;
+    margin-right: 1.5rem;
+    font-size: 1.5rem;
     font-weight: bold;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
 }
 
-.btn-play-large {
+.play-large {
     background: white;
     color: black;
 }
 
-.btn-mylist-large {
+.add-to-list {
     background: rgba(109, 109, 110, 0.7);
     color: white;
 }
 
-.modal-details {
-    margin-top: 2rem;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #ccc;
+/* ======================== АНИМАЦИИ ======================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
-/* Адаптив */
+@keyframes slideUpFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes modalDrop {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ======================== АДАПТИВ ======================== */
 @media (max-width: 768px) {
-    .poster-wrapper {
-        flex: 0 0 200px;
+    .billboard-title {
+        font-size: 3.5rem;
     }
 
-    .poster-large {
-        height: 112px;
+    .billboard-synopsis {
+        font-size: 1.3rem;
     }
 
-    .modal-info h1 {
-        font-size: 2.5rem;
+    .title-card-wrapper {
+        flex: 0 0 180px;
     }
 
-    .modal-banner {
-        height: 300px;
+    .title-card {
+        height: 101px;
+    }
+
+    .nav-arrow {
+        width: 40px;
+        height: 40px;
+    }
+
+    .modal-title {
+        font-size: 2.8rem;
+    }
+
+    .modal-hero {
+        height: 320px;
+    }
+
+    .modal-body {
+        padding: 2rem;
     }
 }

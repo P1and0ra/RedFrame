@@ -77,5 +77,13 @@ export const avatars = [
     ];
 
 export const MovieData = [
-
+    { id: 1, title: "Wednesday", poster: poster1 },
+    { id: 2, title: "Squid Game", poster: poster2 },
+    { id: 3, title: "The King Speech", poster: poster3 },
+    { id: 4, title: "Let Me In", poster: poster4 },
+    { id: 5, title: "Expendables", poster: poster5 },
+    { id: 6, title: "The American", poster: poster6 },
+    { id: 7, title: "Somewhere", poster: poster7 },
+    { id: 8, title: "A history about Facebook", poster: poster8 },
+    { id: 9, title: "Never Let Me Go", poster: poster9 },
 ]
