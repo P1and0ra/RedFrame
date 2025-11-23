@@ -1,7 +1,7 @@
 # Netflix Clone  
 **A modern, full-stack Netflix clone with authentication, profile selection, and a dynamic browsing experience.**
 
-![Netflix Clone Preview](https://i.imgur.com/placeholder.jpg)  
+![Netflix Clone Preview](./src/assets/StreamPreviev.png)  
 *Beautiful UI, smooth animations, and responsive design — just like the real Netflix.*
 
 ---
