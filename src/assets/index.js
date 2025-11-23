@@ -1,4 +1,4 @@
-import NetflixLogo from './netflix.png'
+import NetflixLogo from './Logo2.png'
 import LandingBackground from './LandingPage2-0-1.jpg'
 import Profile1 from './normal.jpg'
 import Profile2 from './profile.jpg'
