@@ -118,8 +118,12 @@ export default function Browse() {
             {selectedMovie && (
                 <div className="title-modal-overlay" onClick={() => setSelectedMovie(null)}>
                     <article className="title-modal" onClick={(e) => e.stopPropagation()}>
-                        <button className="modal-close" onClick={() => setSelectedMovie(null)} aria-label="Close">
-                            Close
+                        <button
+                            className="modal-close"
+                            onClick={() => setSelectedMovie(null)}
+                            aria-label="Close"
+                        >
+                            {/* Никакого текста — только иконка через CSS */}
                         </button>
                         <img src={selectedMovie.poster} alt={selectedMovie.title} className="modal-hero" />
                         <div className="modal-body">

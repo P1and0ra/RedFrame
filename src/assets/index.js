@@ -13,7 +13,11 @@ import poster6 from './poster6.jpg'
 import poster7 from './poster7.jpg'
 import poster8 from './poster8.jpg'
 import poster9 from './poster9.jpg'
-
+import poster10 from './poster10.jpg'
+import poster11 from './poster11.jpg'
+import poster12 from './poster12.jpg'
+import poster13 from './poster13.jpg'
+import poster14 from './poster14.jpg'
 
 
 export {
@@ -86,4 +90,9 @@ export const MovieData = [
     { id: 7, title: "Somewhere", poster: poster7 },
     { id: 8, title: "A history about Facebook", poster: poster8 },
     { id: 9, title: "Never Let Me Go", poster: poster9 },
+    { id: 10, title: "Decision to Leave", poster: poster10 },
+    { id: 11, title: "Blonde", poster: poster11 },
+    { id: 12, title: "Everything Everywhere", poster: poster12 },
+    { id: 13, title: "All the Beauty", poster: poster13 },
+    { id: 14, title: "Vengeance", poster: poster14 },
 ]

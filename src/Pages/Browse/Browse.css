@@ -5,11 +5,12 @@
     min-height: 100vh;
     font-family: "Helvetica Neue", Arial, sans-serif;
 }
+
 .app-container {
     z-index: 10;
     position: relative;
-    
-}   
+
+}
 
 /* ======================== BILLBOARD ======================== */
 .billboard {
@@ -237,21 +238,55 @@
     opacity: 0;
 }
 
+/* КРАСИВЫЙ АНИМИРОВАННЫЙ КРЕСТИК — КАК В NETFLIX */
 .modal-close {
     position: absolute;
-    top: 20px;
-    right: 30px;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 4.5rem;
+    top: 24px;
+    right: 32px;
+    width: 52px;
+    height: 52px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
     cursor: pointer;
     z-index: 10;
-    transition: all 0.3s;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
 }
 
 .modal-close:hover {
-    transform: scale(1.2);
+    background: #e50914;
+    border-color: #e50914;
+    transform: scale(1.15) rotate(90deg);
+}
+
+/* Сам крестик — через ::before и ::after */
+.modal-close::before,
+.modal-close::after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.4s ease;
+}
+
+.modal-close::before {
+    transform: rotate(45deg);
+}
+
+.modal-close::after {
+    transform: rotate(-45deg);
+}
+
+/* При наведении — лёгкое раскрытие */
+.modal-close:hover::before,
+.modal-close:hover::after {
+    width: 28px;
 }
 
 .modal-hero {
