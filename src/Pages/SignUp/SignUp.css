@@ -1,0 +1,80 @@
+/* ==== ОСНОВА СТРАНИЦЫ ==== */
+.signup-page {
+    min-height: 100dvh;                    /* 100% высоты экрана даже на мобильных сафари */
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Тёмный оверлей поверх постеров (чуть прозрачный чёрный) */
+.signup-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Постеры Heroes — на весь экран под оверлеем */
+.signup-page > :nth-child(2) {          /* <Heroes /> */
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* ==== ГЛАВНЫЙ КОНТЕНТ (форма по центру) ==== */
+.signup-form-container {
+    flex: 1;                               /* занимает всё доступное место между навбаром и футером */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(2rem, 8vw, 4rem) 1rem;   /* адаптивные отступы сверху/снизу */
+    z-index: 10;
+    width: 100%;
+    max-width: 640px;                      /* чуть шире чем было */
+    margin: 0 auto;
+}
+
+/* Если внутри формы ещё один враппер — снимаем с него лишнее */
+.signup-form-container > div {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* ==== ФУТЕР ВСЕГДА ВНИЗУ ==== */
+.footer-signup-container {
+    flex-shrink: 0;                        /* не даём сжиматься */
+    padding: clamp(1.5rem, 5vw, 3rem) 1rem;
+    text-align: center;
+    z-index: 10;
+    position: relative;
+}
+
+/* ==== НАВБАР ПОВЕРХ ВСЕГО ==== */
+.navbar-auth {
+    position: relative;
+    z-index: 20;
+}
+
+/* ==== АДАПТИВНЫЕ ПОПРАВКИ (если что-то нужно подправить на маленьких экранах) ==== */
+@media (max-width: 480px) {
+    .signup-form-container {
+        padding: 2rem 1rem;
+    }
+    
+    .footer-signup-container {
+        padding: 2rem 1rem;
+    }
+}
+
+@media (min-width: 1920px) {
+    .signup-form-container {
+        max-width: 720px;                  /* на больших мониторах чуть шире */
+    }
+}

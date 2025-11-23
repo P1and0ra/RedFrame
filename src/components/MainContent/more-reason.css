@@ -1,0 +1,174 @@
+
+
+.more-reason {
+  margin-top: 40px;
+  padding: 50px 20px;
+  color: #fff;
+}
+
+.more-reason__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+.more-reason__side {
+  padding-top: 6px;
+  padding-left: 60px;
+}
+
+.more-reason__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+
+.more-reason__content {
+  grid-column: 1 / -1;
+  margin-top: -40px;
+}
+
+.more-reason__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 340px));
+  gap: 24px;
+  justify-content: center;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+
+.more-reason__card {
+  width: 100%;
+  max-width: 340px;
+  min-height: 240px;
+  padding: 18px 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255,80,120,0.22) 0%, rgba(60,150,255,0.18) 100%);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* резиновый bounce */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  
+  /* лёгкий постоянный "пульс" градиента */
+  background-size: 200% 200%;
+  animation: gradientPulse 8s ease infinite;
+}
+
+/* Плавное движение градиента — карточка слегка "дышит" */
+@keyframes gradientPulse {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+/* Блик, который пролетает при наведении */
+.more-reason__card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255,255,255,0.15), 
+    transparent);
+  transform: translateX(-100%) rotate(35deg);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.more-reason__card:hover::after {
+  transform: translateX(100%) rotate(35deg);
+}
+
+/* Сама карточка при наведении — с лёгким bounce */
+.more-reason__card:hover {
+  transform: translateY(-16px) scale(1.04);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.65);
+  background: linear-gradient(135deg, rgba(255,80,120,0.30) 0%, rgba(60,150,255,0.26) 100%);
+}
+
+/* Тонкая неоновая обводка при ховере */
+.more-reason__card:hover {
+  box-shadow: 
+    0 24px 48px rgba(0,0,0,0.65),
+    0 0 20px rgba(255, 80, 150, 0.3),
+    0 0 30px rgba(60, 150, 255, 0.25);
+}
+
+/* Текст внутри слегка подсвечивается */
+.more-reason__card-title,
+.more-reason__card-text {
+  transition: all 0.35s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.more-reason__card:hover .more-reason__card-title {
+  transform: translateY(-2px);
+  text-shadow: 0 0 12px rgba(255,255,255,0.6);
+}
+
+.more-reason__card:hover .more-reason__card-text {
+  color: #fff;
+}
+
+/* Оригинальный ::before оставляем как был */
+.more-reason__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%);
+  pointer-events: none;
+  border-radius: 12px;
+}
+
+.more-reason__card-title {
+  margin: 0 0 10px 0;
+  font-size: 1.12rem;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.more-reason__card-text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: rgba(255,255,255,0.94);
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* ────── ВЕСЬ АДАПТИВ —  БЕЗ ИЗМЕНЕНИЙ ────── */
+@media (max-width: 960px) {
+  .more-reason__container { grid-template-columns: 1fr; gap: 28px; }
+  .more-reason__side { padding-left: 0; }
+  .more-reason__content { margin-top: 0; }
+  .more-reason__title { text-align: center; font-size: 1.65rem; }
+  .more-reason__grid { grid-template-columns: repeat(auto-fit, minmax(260px, 320px)); padding: 0 10px; }
+}
+
+@media (max-width: 640px) {
+  .more-reason { padding: 50px 16px; }
+  .more-reason__grid { grid-template-columns: 1fr; gap: 16px; padding: 0; }
+  .more-reason__card { max-width: 100%; min-height: 220px; padding: 18px; }
+  .more-reason__card-title { font-size: 1.1rem; }
+  .more-reason__card-text   { font-size: 0.9rem; }
+}
+
+@media (min-width: 1600px) {
+  .more-reason__container { max-width: 1600px; grid-template-columns: minmax(340px, 380px) 1fr; gap: 56px; }
+  .more-reason__title { font-size: 2.1rem; }
+  .more-reason__grid { gap: 32px; grid-template-columns: repeat(auto-fit, minmax(280px, 340px)); }
+}

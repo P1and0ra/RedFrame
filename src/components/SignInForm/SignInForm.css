@@ -1,0 +1,196 @@
+/* src/components/SignInForm/SignInForm.css — С Netflix-анимацией полей */
+
+.signin-form-wrapper {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.signin-card {
+    background: rgba(0, 0, 0, 0.75);
+    padding: 60px 68px 40px;
+    border-radius: 8px;
+    color: white;
+    backdrop-filter: blur(20px);
+}
+
+.signin-card h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 28px;
+    text-align: left;
+}
+
+/* ─────── КРАСИВАЯ АНИМАЦИЯ ПОЛЕЙ (Netflix-style) ─────── */
+.input-wrapper {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.signin-input {
+    width: 100%;
+    padding: 20px 20px 8px 20px;
+    /* больше отступ сверху для label */
+    background: #333;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.signin-input:focus {
+    outline: none;
+    background: #454545;
+}
+
+/* Label — изначально внутри поля */
+.input-label {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    color: #8c8c8c;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.2s ease-out;
+    transform-origin: left center;
+}
+
+/* Когда поле в фокусе или заполнено — label поднимается */
+.signin-input:focus~.input-label,
+.signin-input:not(:placeholder-shown)~.input-label {
+    top: 8px;
+    font-size: 0.75rem;
+    color: #e50914;
+}
+
+/* ─────── Остальные стили (без изменений) ─────── */
+.btn-signin {
+    width: 100%;
+    background: #e50914;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 24px 0 12px;
+    transition: background 0.2s;
+}
+
+.btn-signin:hover {
+    background: #f40612;
+}
+
+.or-divider {
+    position: relative;
+    text-align: center;
+    margin: 20px 0;
+    color: #8c8c8c;
+    font-size: 0.9rem;
+}
+
+.or-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #333;
+}
+
+.or-divider span {
+    background: rgba(0, 0, 0, 0.75);
+    padding: 0 12px;
+}
+
+.btn-code {
+    width: 100%;
+    background: #666;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.btn-code:hover {
+    background: #777;
+}
+
+.forgot-link {
+    display: block;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+.remember-me {
+    margin-bottom: 50px;
+    font-size: 0.9rem;
+    color: #b3b3b3;
+}
+
+.remember-me label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #e50914;
+}
+
+.signup-link {
+    color: #737373;
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+
+.signup-link a {
+    color: white;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+.recaptcha-text {
+    color: #8c8c8c;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+.recaptcha-text a {
+    color: #0071eb;
+    text-decoration: none;
+}
+
+.recaptcha-text a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 740px) {
+    .signin-card {
+        padding: 40px 30px;
+    }
+
+    .signin-card h1 {
+        font-size: 1.8rem;
+    }
+}

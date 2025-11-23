@@ -1,6 +1,5 @@
 .navbar {
   align-items: center;
-  border: 2px solid rgb(0, 255, 0);
   height: 180px;
   width: calc(80%); /* не будет больше viewport */
   max-width: 100%;
@@ -17,7 +16,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 5px 10px;
-  border: 2px solid rgb(255, 0, 0);
   z-index: 10;
   transition: top 0.3s ease;
 }
@@ -38,3 +36,32 @@
   gap: 1px;                 /* расстояние между Menu и Sign in */
 }
 
+
+.navbar-auth {
+  background: transparent !important; /* или #000, если хочешь чёрный */
+  backdrop-filter: none;
+}
+
+.navbar-auth .navbar-sticky {
+  justify-content: flex-start; /* логотип слева, ничего справа */
+  padding: 20px 45px;
+}
+
+.navbar-auth .logo {
+  width: 167px;
+}
+.btn-signout {
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-signout:hover {
+  background: #f40612;
+}

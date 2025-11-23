@@ -2,6 +2,8 @@
     width: 100%;
     /* уменьшил верхний отступ и сдвинул всю секцию выше */
     padding: 10px 20px 20px;
+    /* avoid large unexpected shifts on very wide screens:
+       use viewport height units instead of percent of width */
     margin-top: -20%;
     /* поднимает заголовок и карусель выше на странице */
     display: flex;
@@ -11,6 +13,7 @@
 .trending-now {
     font-size: 2rem;
     font-weight: 600;
+    color: rgb(255, 255, 255);
     /* ширина под 4 карточки карусели — сохраняем выравнивание над первой карточкой */
     width: calc(270px * 4 + 20px * 3);
     margin: 0 auto 12px;
@@ -140,4 +143,11 @@
 /* чтобы стрелки не перекрывали контент при z-index проблемах */
 .carousel-wrapper .arrow {
     pointer-events: auto;
+}
+
+/* адаптивные стили для маленьких экранов */
+@media (min-width: 1200px) {
+    .trending-section {
+        margin-top: -28%;
+    }
 }

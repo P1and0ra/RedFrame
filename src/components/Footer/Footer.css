@@ -1,0 +1,98 @@
+/* src/components/Footer/Footer.css — 100% как на Netflix 2025 */
+
+.netflix-footer {
+  background-color: #000;
+  color: #757575;
+  padding: 70px 45px 30px;
+  border-top: 1px solid #303030;
+  font-size: 0.9rem;
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-contact {
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.footer-contact a {
+  color: #757575;
+  text-decoration: underline;
+}
+
+.footer-contact a:hover {
+  color: #fff;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-column a {
+  color: #757575;
+  text-decoration: underline;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.footer-column a:hover {
+  color: #fff;
+}
+
+.footer-language {
+  margin: 30px 0;
+}
+
+.language-select {
+  background: transparent;
+  border: 1px solid #757575;
+  color: #fff;
+  padding: 10px 30px 10px 40px;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23fff' viewBox='0 0 16 16'%3E%3Cpath d='M8 12l-5-5h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 12px center;
+  appearance: none;
+  cursor: pointer;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: #757575;
+}
+
+/* Адаптив — как у Netflix */
+@media (max-width: 960px) {
+  .footer-links {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 740px) {
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+  .netflix-footer {
+    padding: 50px 20px 30px;
+  }
+}
